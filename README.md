@@ -24,7 +24,7 @@ models.ipynb – model training and evaluation
 
 data/ – dataset files
 
-Team
+#Team
 
 Ananta Aryal
 Anubhav Bhetuwal
