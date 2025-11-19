@@ -1,0 +1,9 @@
+# Ignore big dataset files
+data/*.pkl
+data/*.npy
+data/*.csv
+
+# Ignore cache and Jupyter junk
+.ipynb_checkpoints/
+__pycache__/
+.DS_Store
