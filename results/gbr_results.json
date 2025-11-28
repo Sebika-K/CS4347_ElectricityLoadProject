@@ -1,0 +1,4 @@
+{
+    "model": "GradientBoosting + RandomProjection (50 comps)",
+    "rmse": 6.853659803030534
+}
