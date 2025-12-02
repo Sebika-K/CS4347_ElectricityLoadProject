@@ -1,110 +1,76 @@
+# Electricity Load Forecasting
 
----
+This project applies machine learning methods to model and forecast household electricity consumption using the OpenML Electricity Load Diagrams 2011–2014 dataset. The dataset contains over 105,000 observations with 316 meter readings collected at uniform time intervals.
 
-## 📊 Dataset
+## Project Overview
+The objective is to predict the target meter value (value_0) based on the readings of the remaining meters. The task involves high dimensionality, skewed distributions across features, and weak linear relationships, making it a suitable case for regularized and nonlinear models.
 
-- **Source:** OpenML #46214  
-- **Rows:** 105,217  
-- **Features:** 319  
-  - 316 numeric smart-meter readings  
-  - timestamp, id_series, time_step  
-- **Missing values:** None  
-- **Properties:**  
-  - High-dimensional  
-  - Strong right-skew  
-  - Weak pairwise correlations  
+The project includes data cleaning, exploratory data analysis, baseline modeling, regularized regression methods, dimensionality reduction, and nonlinear modeling with XGBoost.
 
----
+## Authors
+Sebika Khulal  
+Ananta Aryal  
+Anubhav Bhetuwal
 
-## 🔍 Exploratory Data Analysis (EDA)
 
-Key findings:
+## Dataset
+Source: OpenML dataset 46214  
+Rows: 105,217  
+Features: 319  
+Includes 316 numeric meter readings plus timestamp, id_series, and time index.  
+The dataset contains no missing numerical values but exhibits large variation in scales, right-skewed distributions, and nonlinear patterns.
 
-### **Distribution**
-- All meter features show strong right-skew.
-- Many zeros (periods of low consumption).
-- Rare spikes represent unusual high-usage events.
+## Exploratory Data Analysis
+Main findings:
 
-### **Correlation**
-- `value_0` has **no strong correlation** with any other feature (< 0.22).
-- Confirms that **linear models will struggle**.
+- Strong right-skew across all meter readings.
+- Many features contain long stretches of zeros, indicating sparse consumption.
+- Pairwise correlations with the target are weak (maximum below 0.22).
+- Scatterplots show banding caused by repeated meter readings and nonlinear relationships.
+- The magnitude differences across features justify feature normalization.
+- Weak linear structure implies that linear models will underperform, motivating the use of nonlinear and dimensionality reduction methods.
 
-### **Scatterplots**
-- Show nonlinear, banded patterns.
-- Indicates strong nonlinear structure across meters.
+## Modeling
 
-### **Implications**
-- Normalization required  
-- Dimensionality reduction helps  
-- Nonlinear models (e.g., XGBoost) expected to outperform linear models  
+### Baseline: Linear Regression
+Chronological 80/20 split without shuffling.  
+RMSE: approximately 7.33  
 
----
+Linear regression underperforms because correlations with the target are weak, feature distributions are skewed, and the data exhibits nonlinear structure.
 
-## 🤖 Models and Results
+### Regularized Models
+Ridge Regression  
+RMSE: approximately 7.33  
 
-### **Baseline Model: Linear Regression**
-- Split: 80/20 chronological  
-- RMSE: **7.33**  
-- Underfits due to:
-  - Weak correlations  
-  - High nonlinearity  
-  - Very high dimension  
+Lasso Regression  
+RMSE: approximately 6.35  
 
----
+Lasso improves performance by removing noisy or irrelevant features in the high-dimensional setting.
 
-### **Improved Models**
+### Dimensionality Reduction + Nonlinear Model
+Sparse Random Projection (316 → 50 components)  
+XGBoost trained on SRP outputs  
+Test RMSE: approximately 6.42  
 
-| Model | RMSE | Notes |
-|-------|------|-------|
-| **Ridge Regression** | ~7.33 | Scaling helps stability but not accuracy |
-| **Lasso Regression** | **6.35** | Removes noisy features, good improvement |
-| **SRP + XGBoost** | **6.42** | Best nonlinear model; robust to skew |
+SRP reduces dimensionality efficiently while approximately preserving distances.  
+XGBoost handles nonlinearity and interactions, resulting in strong performance.
 
-**Best overall model:**  
-✔ **Lasso Regression (RMSE ≈ 6.35)**  
-✔ XGBoost (RMSE ≈ 6.42) close behind but slower and heavier
+## Model Comparison
+| Model | RMSE |
+|-------|-------|
+| Linear Regression | ~7.33 |
+| Ridge Regression | ~7.33 |
+| Lasso Regression | ~6.35 |
+| SRP + XGBoost | ~6.42 |
 
----
+Lasso achieves the best overall RMSE.  
+XGBoost performs slightly worse but remains competitive and better suited for nonlinear structure.
 
-## 🧪 Final Comparison Plot
+## Future Work
+- Introduce lag features for true forecasting (t−1, t−24, etc.).
+- Add cyclical encodings for hour and day.
+- Build multi-step forecasting models.
+- Explore more advanced nonlinear models.
 
-A bar chart comparing Baseline, Ridge, Lasso, and XGBoost RMSE values is included in the report.  
-
-This confirms:
-- Linear models perform poorly  
-- Regularization helps  
-- Nonlinear + dimensionality reduction gives the strongest improvements  
-
----
-
-## 🧠 Contributions
-
-### **Sebika Khulal**
-- Loaded & cleaned dataset  
-- Full EDA (histograms, correlations, scatterplots)  
-- Baseline model  
-- Normalization pipeline  
-
-### **Ananta Aryal**
-- Feature engineering  
-- Time-based feature creation  
-- Forecasting preparation  
-
-### **Anubhav Bhetuwal**
-- SRP dimensionality reduction  
-- Ridge and Lasso tuning  
-- XGBoost modeling and final evaluation  
-
----
-
-## 📌 Future Work
-- Add lagged features (t-1, t-24, etc)  
-- Build multi-step forecasting models  
-- Evaluate advanced methods (LSTM, Temporal Convnets)  
-- Create a full dashboard for consumption analytics  
-
----
-
-## 📄 License
-This project is completed for academic purposes as part of **CS 4347 — Introduction to Machine Learning** at Texas State University.
-
+## Notes
+This project was completed as part of CS 4347, Introduction to Machine Learning, at Texas State University.
