@@ -20,6 +20,7 @@ Includes 316 numeric meter readings plus timestamp, id_series, and time index.
 The dataset contains no missing numerical values but exhibits large variation in scales, right-skewed distributions, and nonlinear patterns.
 
 ## Structure
+
 CS4347_ElectricityLoadProject/
 │
 ├── data/ # Raw and cleaned data
@@ -44,6 +45,7 @@ CS4347_ElectricityLoadProject/
 │
 ├── README.md
 └── requirements.txt
+
 
 ## Exploratory Data Analysis
 Main findings:
