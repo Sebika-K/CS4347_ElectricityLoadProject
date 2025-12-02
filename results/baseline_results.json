@@ -1,5 +1,4 @@
 {
-    "model": "Ridge Regression (tuned)",
-    "best_alpha": 100.0,
-    "rmse": 7.957585889859101
+  "linear_regression_raw": 7.329735736397394,
+  "linear_regression_scaled": 7.329735736397361
 }
