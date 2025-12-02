@@ -21,31 +21,29 @@ The dataset contains no missing numerical values but exhibits large variation in
 
 ## Structure
 CS4347_ElectricityLoadProject/
-
 │
-├── data/                         # Raw and cleaned data
-│   └── cleaned_data.pkl
+├── data/ # Raw and cleaned data
+│ └── cleaned_data.pkl
 │
 ├── notebooks/
-│   ├── 01_load_clean_data.ipynb
-│   ├── 01_EDA.ipynb
-│   ├── 02_baseline_model.ipynb
-│   ├── 03_hyperparameter_tuning.ipynb
-│   └── FinalReport.ipynb         # Unified project report (exported as PDF)
+│ ├── 01_load_clean_data.ipynb
+│ ├── 01_EDA.ipynb
+│ ├── 02_baseline_model.ipynb
+│ ├── 03_hyperparameter_tuning.ipynb
+│ └── FinalReport.ipynb
 │
 ├── report/
-│   └── FinalReport.pdf
+│ └── FinalReport.pdf
 │
 ├── results/
-│   ├── baseline_results.json
-│   ├── ridge_results.json
-│   ├── lasso_results.json
-│   ├── gbr_results.json
-│   └── xgb_results.json
+│ ├── baseline_results.json
+│ ├── ridge_results.json
+│ ├── lasso_results.json
+│ ├── gbr_results.json
+│ └── xgb_results.json
 │
 ├── README.md
 └── requirements.txt
-
 
 ## Exploratory Data Analysis
 Main findings:
