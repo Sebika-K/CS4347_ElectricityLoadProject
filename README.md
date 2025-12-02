@@ -12,7 +12,6 @@ Sebika Khulal
 Ananta Aryal  
 Anubhav Bhetuwal
 
-
 ## Dataset
 Source: OpenML dataset 46214  
 Rows: 105,217  
