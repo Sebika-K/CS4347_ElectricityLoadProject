@@ -21,6 +21,7 @@ The dataset contains no missing numerical values but exhibits large variation in
 
 ## Structure
 CS4347_ElectricityLoadProject/
+
 │
 ├── data/                         # Raw and cleaned data
 │   └── cleaned_data.pkl
