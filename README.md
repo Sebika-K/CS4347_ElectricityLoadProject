@@ -26,7 +26,7 @@ The dataset contains no missing numerical values but exhibits large variation in
 CS4347_ElectricityLoadProject/
 │
 ├── data/                     # Raw and cleaned data
-│   └── cleaned_data.pkl
+│   └── 
 │
 ├── notebooks/
 │   ├── 01_load_clean_data.ipynb
