@@ -26,13 +26,17 @@ The dataset contains no missing numerical values but exhibits large variation in
 CS4347_ElectricityLoadProject/
 │
 ├── data/                     # Raw and cleaned data
-│   └── 
+│   ├── electricity.csv
+│   └── cleaned_data.pkl
 │
 ├── notebooks/
+│   ├── download_dataset.ipynb
 │   ├── 01_load_clean_data.ipynb
 │   ├── 01_EDA.ipynb
 │   ├── 02_baseline_model.ipynb
 │   ├── 03_hyperparameter_tuning.ipynb
+│   ├── 04_time_series_forecasting.ipynb
+│   ├── 05_normalization_analysis.ipynb
 │   └── FinalReport.ipynb
 │
 ├── report/
