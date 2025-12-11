@@ -19,6 +19,8 @@ Features: 319
 Includes 316 numeric meter readings plus timestamp, id_series, and time index.  
 The dataset contains no missing numerical values but exhibits large variation in scales, right-skewed distributions, and nonlinear patterns.
 
+Dataset link: https://www.openml.org/d/46214
+
 
 ## Structure
 
@@ -53,6 +55,12 @@ CS4347_ElectricityLoadProject/
 └── requirements.txt
 
 ```
+
+Additional resources:
+
+- Final report PDF: report/FinalReport.pdf
+
+- Main notebook: notebooks/FinalReport.ipynb
 ## Exploratory Data Analysis
 Main findings:
 
@@ -64,6 +72,10 @@ Main findings:
 - Weak linear structure implies that linear models will underperform, motivating the use of nonlinear and dimensionality reduction methods.
 
 ## Modeling
+
+### Normalization
+
+Feature normalization was applied using StandardScaler to address the large scale imbalance across meter readings. This ensured that features with large magnitudes did not dominate the model during training.
 
 ### Baseline: Linear Regression
 Chronological 80/20 split without shuffling.  
@@ -104,6 +116,20 @@ XGBoost performs slightly worse but remains competitive and better suited for no
 - Add cyclical encodings for hour and day.
 - Build multi-step forecasting models.
 - Explore more advanced nonlinear models.
+
+## How to Run
+
+Install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+Then open the main notebook:
+
+```bash
+jupyter notebook notebooks/FinalReport.ipynb
+```
 
 ## Notes
 This project was completed as part of CS 4347, Introduction to Machine Learning, at Texas State University.
